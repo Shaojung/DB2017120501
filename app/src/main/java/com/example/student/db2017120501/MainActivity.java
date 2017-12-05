@@ -16,6 +16,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     TextView tv;
+    String str;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +36,16 @@ public class MainActivity extends AppCompatActivity {
                     InputStream inputStream = conn.getInputStream();
                     InputStreamReader reader = new InputStreamReader(inputStream);
                     BufferedReader br = new BufferedReader(reader);
-                    String str = br.readLine();
+                    str = br.readLine();
                     Log.d("NET", str);
-                    tv.setText(str.substring(0, 100));
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            tv.setText(str.substring(0, 500));
+                        }
+                    });
+
+
 
 
                 } catch (MalformedURLException e) {
