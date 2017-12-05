@@ -3,6 +3,7 @@ package com.example.student.db2017120501;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,17 +15,17 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
-
+    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        tv = (TextView) findViewById(R.id.textView);
         new Thread(){
             @Override
             public void run() {
                 super.run();
-                String str_url = "http://data.taipei/opendata/datalist/apiAccess?scope=datasetMetadataSearch&q=id:1ed45a8a-d26a-4a5f-b544-788a4071eea2";
+                String str_url = "http://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=5a0e5fbb-72f8-41c6-908e-2fb25eff9b8a";
                 URL url = null;
                 try {
                     url = new URL(str_url);
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     BufferedReader br = new BufferedReader(reader);
                     String str = br.readLine();
                     Log.d("NET", str);
-
+                    tv.setText(str.substring(0, 100));
 
 
                 } catch (MalformedURLException e) {
