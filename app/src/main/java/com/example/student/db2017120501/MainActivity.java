@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 super.run();
-                String str_url = "http://www.google.com.tw";
+                String str_url = "http://data.taipei/opendata/datalist/apiAccess?scope=datasetMetadataSearch&q=id:1ed45a8a-d26a-4a5f-b544-788a4071eea2";
                 URL url = null;
                 try {
                     url = new URL(str_url);
